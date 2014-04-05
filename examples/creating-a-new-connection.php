@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This file documents how to create a new api instance object from a  
+ * This file documents how to create a new api instance object from a
  * tabs api instance.
  *
  * PHP Version 5.3
- * 
+ *
  * @category  API_Client
  * @package   Tabs
  * @author    Carlton Software <support@carltonsoftware.co.uk>
@@ -16,9 +16,9 @@
 
 // Include the autoloader
 require_once '../tabs/autoload.php';
-    
+
 \tabs\api\client\ApiClient::factory(
-    'http://zz.api.carltonsoftware.co.uk/',
-    'mouse', // Api Key
-    'cottage'  // Api Secret
+    '', // Api Url
+    '', // Api Key
+    ''  // Api Secret
 );
