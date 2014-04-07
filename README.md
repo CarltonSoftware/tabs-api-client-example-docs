@@ -1,4 +1,4 @@
-# Tabs API Client Examples and Documentation
+# Tabs API Client examples and documentation
 
 This repo contains examples and documentation from the Tabs Api Client.
 
