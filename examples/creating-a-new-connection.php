@@ -15,10 +15,10 @@
  */
 
 // Include the autoloader
-require_once '../tabs/autoload.php';
+require_once '../../tabs/autoload.php';
 
 \tabs\api\client\ApiClient::factory(
-    '', // Api Url
-    '', // Api Key
-    ''  // Api Secret
+    'http://carltonsoftware.apiary.io', // Api Url
+    'mouse', // Api Key
+    'cottage'  // Api Secret
 );
