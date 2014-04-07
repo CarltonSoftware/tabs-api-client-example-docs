@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/tabs.html">\tabs</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1327464879"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1327464879" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-992998058"></a>
+                                <a href="../namespaces/tabs.html" style="margin-left: 30px; padding-left: 0">tabs</a>
+            </div>
+            <div id="namespace-992998058" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-538338704"></a>
+                                <a href="../namespaces/tabs.api.html" style="margin-left: 30px; padding-left: 0">api</a>
+            </div>
+            <div id="namespace-538338704" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-857917266"></a>
+                                <a href="../namespaces/tabs.api.booking.html" style="margin-left: 30px; padding-left: 0">booking</a>
+            </div>
+            <div id="namespace-857917266" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.booking.Booking.html">Booking</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.booking.Enquiry.html">Enquiry</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.booking.PartyDetail.html">PartyDetail</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.booking.Payment.html">Payment</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.booking.TabsBooking.html">TabsBooking</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-417079941"></a>
+                                <a href="../namespaces/tabs.api.client.html" style="margin-left: 30px; padding-left: 0">client</a>
+            </div>
+            <div id="namespace-417079941" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.client.ApiClient.html">ApiClient</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.client.ApiException.html">ApiException</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.client.Hmac.html">Hmac</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1624098310"></a>
+                                <a href="../namespaces/tabs.api.core.html" style="margin-left: 30px; padding-left: 0">core</a>
+            </div>
+            <div id="namespace-1624098310" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.core.Address.html">Address</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.ApiSetting.html">ApiSetting</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.ApiUser.html">ApiUser</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Area.html">Area</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Attribute.html">Attribute</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Base.html">Base</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Bounds.html">Bounds</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Brochure.html">Brochure</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Coordinates.html">Coordinates</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Country.html">Country</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Customer.html">Customer</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Location.html">Location</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Owner.html">Owner</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Person.html">Person</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.ShortBreak.html">ShortBreak</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.core.Source.html">Source</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1177187267"></a>
+                                <a href="../namespaces/tabs.api.pricing.html" style="margin-left: 30px; padding-left: 0">pricing</a>
+            </div>
+            <div id="namespace-1177187267" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.pricing.Extra.html">Extra</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.pricing.Pricing.html">Pricing</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-541531052"></a>
+                                <a href="../namespaces/tabs.api.property.html" style="margin-left: 30px; padding-left: 0">property</a>
+            </div>
+            <div id="namespace-541531052" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.property.Calendar.html">Calendar</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.CustomerComment.html">CustomerComment</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.Property.html">Property</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.PropertyBrand.html">PropertyBrand</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.PropertySearch.html">PropertySearch</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.SearchHelper.html">SearchHelper</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.SearchHelperExtended.html">SearchHelperExtended</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.property.SpecialOffer.html">SpecialOffer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2121149726"></a>
+                                <a href="../namespaces/tabs.api.utility.html" style="margin-left: 30px; padding-left: 0">utility</a>
+            </div>
+            <div id="namespace-2121149726" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/tabs.api.utility.Resource.html">Resource</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.utility.ResourceAttribute.html">ResourceAttribute</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.utility.ResourceBrand.html">ResourceBrand</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.utility.SagepayServer.html">SagepayServer</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.utility.SearchTerm.html">SearchTerm</a></li>
+                                                    <li class="class"><a href="../classes/tabs.api.utility.Utility.html">Utility</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/tabs.api.utility.html">\tabs\api\utility</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\tabs\api\utility</small>Utility</h1>
+                    <p><em>Tabs Rest API Utility Factory.  Uses the API client class to build
+country and other utility objects.</em></p>
+                    <p>Provides setter/getter methods for all child classes.</p>
+<p>PHP Version 5.3</p>
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_setObjectProperties" class="">setObjectProperties()</a><br />
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_flattenNode" class="">flattenNode()</a><br />
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_assignArrayValue" class="">assignArrayValue()</a><br />
+                                                                    <a href="../classes/tabs.api.core.Base.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getCountries" class="">getCountries()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getCountriesBasic" class="">getCountriesBasic()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getCountry" class="">getCountry()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getAreasAndLocations" class="">getAreasAndLocations()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getAreas" class="">getAreas()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getLocations" class="">getLocations()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getAllLocations" class="">getAllLocations()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_findAreaFromSlug" class="">findAreaFromSlug()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_findLocationFromSlug" class="">findLocationFromSlug()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getSourceCodes" class="">getSourceCodes()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getSourceCodesBasic" class="">getSourceCodesBasic()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getSourceCode" class="">getSourceCode()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_unsubscribe" class="">unsubscribe()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getApiInformation" class="">getApiInformation()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method_getNumberOfProperties" class="">getNumberOfProperties()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#property_areas" class="">$areas</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_setObjectProperty" class="">setObjectProperty()</a><br />
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_setFloatVal" class="">setFloatVal()</a><br />
+                                                                    <a href="../classes/tabs.api.core.Base.html#method_setTimeStamp" class="">setTimeStamp()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method__createSourceObject" class="">_createSourceObject()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method__createResourceBrand" class="">_createResourceBrand()</a><br />
+                                                                    <a href="../classes/tabs.api.utility.Utility.html#method__createResourceAttribute" class="">_createResourceAttribute()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/utility.Utility.php.html"><div class="path-wrapper">utility/Utility.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Tabs</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/tabs.api.core.Base.html">\tabs\api\core\Base</a></div>
+                                                                                                    <div class="namespace-wrapper">\tabs\api\utility\Utility</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                            <dt>See also</dt>
+                                                                                    <dd><a href="http://www.carltonsoftware.co.uk"><div class="namespace-wrapper">http://www.carltonsoftware.co.uk</div></a></dd>
+                                                    
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>API_Client</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Alex Wyett <a href="mailto:alex@wyett.co.uk">alex@wyett.co.uk</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2013 Carlton Software</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p><a href="http://www.php.net/license/3_01.txt">http://www.php.net/license/3_01.txt</a>  PHP License 3.01</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                version
+                            </th>
+                            <td>
+                                                                    <p>Release: 1</p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                todo
+                            </th>
+                            <td>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_areas" name="property_areas" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$areas</h3>
+                <pre class="signature">$areas : array</pre>
+                <p><em>Fetched area/location array</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setObjectProperties" name="method_setObjectProperties" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setObjectProperties()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setObjectProperties(object <span class="argument">$obj</span>, object <span class="argument">$node</span>, array <span class="argument">$exceptions</span>) : void</pre>
+                <p><em>Helper function foor setting object properties</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$obj </td>
+                                <td><p>Generic object passed by reference</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>object</td>
+                                <td>$node </td>
+                                <td><p>Node object to iterate through</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$exceptions </td>
+                                <td><p>Properties to ignore</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_flattenNode" name="method_flattenNode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">flattenNode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">flattenNode(object <span class="argument">$object</span>, object <span class="argument">$node</span>, string <span class="argument">$nodePrefix</span>, array <span class="argument">$nodePrefixKeys</span>) : void</pre>
+                <p><em>Helper function, traverses a multi dimension node and calls
+and objects accessors</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$object </td>
+                                <td><p>Object whos accessors are to be called</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>object</td>
+                                <td>$node </td>
+                                <td><p>Node to be traversed</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$nodePrefix </td>
+                                <td><p>Any string required to prefix
+the node key with</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$nodePrefixKeys </td>
+                                <td><p>An array of keys that require a</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_assignArrayValue" name="method_assignArrayValue" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">assignArrayValue()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">assignArrayValue(array <span class="argument">$array</span>, string <span class="argument">$key</span>, string <span class="argument">$failed_key_value</span>) : mixed</pre>
+                <p><em>Function used to assign a variable a value if it exists in an array
+else, assign failed value</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$array </td>
+                                <td><p>the array to validate</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>the key to check exisitence</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$failed_key_value </td>
+                                <td><p>the value to use if check has failed</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(string <span class="argument">$name</span>, array <span class="argument">$args</span>) : void</pre>
+                <p><em>Generic getter/setter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Name of property</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$args </td>
+                                <td><p>Function arguments</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCountries" name="method_getCountries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCountries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCountries() : array</pre>
+                <p><em>Gets all countries in the utility bundle</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCountriesBasic" name="method_getCountriesBasic" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCountriesBasic()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCountriesBasic() : array</pre>
+                <p><em>Return a simple array of countries</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCountry" name="method_getCountry" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCountry()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCountry(string <span class="argument">$alpha2</span>) : \Country|boolean</pre>
+                <p><em>Gets the country from a supplied alpha2 code</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$alpha2 </td>
+                                <td><p>Alpha 2 country code</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\tabs\api\utility\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \Country|boolean
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAreasAndLocations" name="method_getAreasAndLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAreasAndLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAreasAndLocations(integer <span class="argument">$limit</span>, boolean <span class="argument">$random</span>) : \tabs\api\core\Area|Array</pre>
+                <p><em>Gets all areas and locations</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$limit </td>
+                                <td><p>The maximum number of areas required to return</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$random </td>
+                                <td><p>Randomise results first?</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Area.html">\tabs\api\core\Area</a>|Array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAreas" name="method_getAreas" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAreas()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAreas() : \tabs\api\core\Area|Array</pre>
+                <p><em>Return a simple array of areas</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Area.html">\tabs\api\core\Area</a>|Array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLocations" name="method_getLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLocations() : \tabs\api\core\Location|Array</pre>
+                <p><em>Return a simple array of locations</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Location.html">\tabs\api\core\Location</a>|Array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAllLocations" name="method_getAllLocations" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAllLocations()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAllLocations() : \tabs\api\core\Location|Array</pre>
+                <p><em>Return a simple array of locations</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Location.html">\tabs\api\core\Location</a>|Array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_findAreaFromSlug" name="method_findAreaFromSlug" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">findAreaFromSlug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">findAreaFromSlug(string <span class="argument">$slug</span>) : \tabs\api\core\Area</pre>
+                <p><em>Find an areacode from a slug</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$slug </td>
+                                <td><p>Area slug (Alpha, dashes only)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Area.html">\tabs\api\core\Area</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_findLocationFromSlug" name="method_findLocationFromSlug" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">findLocationFromSlug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">findLocationFromSlug(string <span class="argument">$slug</span>) : \tabs\api\core\Location</pre>
+                <p><em>Find an areacode from a slug</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$slug </td>
+                                <td><p>Location slug (Alpha, dashes only)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Location.html">\tabs\api\core\Location</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSourceCodes" name="method_getSourceCodes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSourceCodes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSourceCodes() : \tabs\api\core\Source|Array</pre>
+                <p><em>Returns an array of source code objects</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Source.html">\tabs\api\core\Source</a>|Array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSourceCodesBasic" name="method_getSourceCodesBasic" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSourceCodesBasic()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSourceCodesBasic() : array</pre>
+                <p><em>Return a simple array of sourcecodes</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSourceCode" name="method_getSourceCode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSourceCode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSourceCode(string <span class="argument">$sourceCode</span>) : \tabs\api\core\Source</pre>
+                <p><em>Returns an array of source code objects</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sourceCode </td>
+                                <td><p>Tabs SourceCode</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Source.html">\tabs\api\core\Source</a>
+                                            &mdash; <p>| boolean</p>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unsubscribe" name="method_unsubscribe" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unsubscribe()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unsubscribe(string <span class="argument">$emailAddress</span>, string <span class="argument">$newsletterType</span>) : boolean</pre>
+                <p><em>Unsubscribes an email from the tabs mailing list</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$emailAddress </td>
+                                <td><p>Email address to unsubscribe</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newsletterType </td>
+                                <td><p>Newsletter to unsubscribe from</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\tabs\api\utility\ApiException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getApiInformation" name="method_getApiInformation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getApiInformation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getApiInformation() : \tabs\api\utility\Resource</pre>
+                <p><em>Request and return the API resource information</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.utility.Resource.html">\tabs\api\utility\Resource</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNumberOfProperties" name="method_getNumberOfProperties" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNumberOfProperties()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNumberOfProperties() : integer</pre>
+                <p><em>Retrieve the number of properties in the api</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setObjectProperty" name="method_setObjectProperty" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setObjectProperty()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setObjectProperty(object <span class="argument">$obj</span>, string <span class="argument">$property</span>, mixed <span class="argument">$value</span>) : void</pre>
+                <p><em>Generic setter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$obj </td>
+                                <td><p>Generic object to set properties</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$property </td>
+                                <td><p>Property of object to set</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>Value of property</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setFloatVal" name="method_setFloatVal" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setFloatVal()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setFloatVal(float <span class="argument">$float</span>, string <span class="argument">$varName</span>) : void</pre>
+                <p><em>Generic float setter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$float </td>
+                                <td><p>Float val needed to set to variable</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$varName </td>
+                                <td><p>Variable name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTimeStamp" name="method_setTimeStamp" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setTimeStamp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTimeStamp(integer <span class="argument">$timestamp</span>, string <span class="argument">$varName</span>) : void</pre>
+                <p><em>Generic timestamp setter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$timestamp </td>
+                                <td><p>TimeStamp val needed to set to variable</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$varName </td>
+                                <td><p>Variable name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/tabs.api.core.Base.html"><div class="path-wrapper">\tabs\api\core\Base</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__createSourceObject" name="method__createSourceObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_createSourceObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_createSourceObject(object <span class="argument">$source</span>) : \tabs\api\core\Source</pre>
+                <p><em>Create a source object from a given result object</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$source </td>
+                                <td><p>Source code response object</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.core.Source.html">\tabs\api\core\Source</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__createResourceBrand" name="method__createResourceBrand" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_createResourceBrand()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_createResourceBrand(string <span class="argument">$brandCode</span>, object <span class="argument">$node</span>) : \tabs\api\utility\ResourceBrand</pre>
+                <p><em>Create a ResourceBrand object from a node</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$brandCode </td>
+                                <td><p>Brand code</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>object</td>
+                                <td>$node </td>
+                                <td><p>JSON object</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.utility.ResourceBrand.html">\tabs\api\utility\ResourceBrand</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__createResourceAttribute" name="method__createResourceAttribute" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_createResourceAttribute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_createResourceAttribute(object <span class="argument">$node</span>) : \tabs\api\utility\ResourceAttribute</pre>
+                <p><em>Create a ResourceBrand object from a node</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$node </td>
+                                <td><p>JSON object</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/tabs.api.utility.ResourceAttribute.html">\tabs\api\utility\ResourceAttribute</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Utility.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/utility/Utility.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/tabs.html">\tabs</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on April 7th, 2014 at 08:24.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
