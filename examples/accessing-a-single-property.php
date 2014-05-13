@@ -26,7 +26,7 @@ try {
     );
     
     // Echoing the property object will call the magic method __toString();
-    echo sprintf('<p>%s</p>', $property);
+    echo sprintf('<h1>%s</h1>', $property);
     
     // You can also call the objects methods to access information
     echo sprintf(
@@ -40,8 +40,23 @@ try {
         $property->getBedrooms()
     );
     
+    // Each property has its own descriptions, full, short and availability
+    // (providing they are in use).
+    echo sprintf(
+        '<h3>Full Description</h3>%s', 
+        $property->getFullDescription()
+    );
+    echo sprintf(
+        '<h3>Short Description</h3>%s', 
+        $property->getShortDescription()
+    );
+    echo sprintf(
+        '<h3>Availability Description</h3>%s', 
+        $property->getAvailabilityDescription()
+    );
+    
     // Get a date range price object array
-    $drps = $property->getDateRangePrices('2013');
+    $drps = $property->getDateRangePrices(date('Y'));
     if (count($drps) > 0) {
         $trs = '';
         foreach ($drps as $drp) {
