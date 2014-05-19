@@ -28,7 +28,7 @@ try {
         $booking = $owner->setOwnerBooking(
             $property->getPropref(),
             strtotime('2012-07-01'),
-            strtotime('2012-07-01'),
+            strtotime('2012-07-08'),
             'Staying there ourselves'
         );
         
