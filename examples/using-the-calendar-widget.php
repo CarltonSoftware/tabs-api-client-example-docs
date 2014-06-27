@@ -21,8 +21,8 @@ try {
     
     // Retrieve property data from api
     $property = tabs\api\property\Property::getProperty(
-        'mousecott',
-        'SS'
+        (filter_input(INPUT_GET, 'propref') ? filter_input(INPUT_GET, 'propref') : 'mousecott'),
+        (filter_input(INPUT_GET, 'brandcode') ? filter_input(INPUT_GET, 'brandcode') : 'SS')
     );
     
     // Echoing the property object will call the magic method __toString();
@@ -48,8 +48,8 @@ try {
     
     // Manipulating a few simple dates gets use a reusable date widget.
     $calDate = mktime(0, 0, 0, date("m"), 1, date("Y"));
-    if (isset($_GET['date'])) {
-        $date = strtotime($_GET['date']);
+    if (filter_input(INPUT_GET, 'date')) {
+        $date = strtotime(filter_input(INPUT_GET, 'date'));
         if ($date > $calDate) {
             $calDate = mktime(0, 0, 0, date("m", $date), 1, date("Y", $date));
         }
@@ -61,22 +61,40 @@ try {
     } else {
         $prevDate = $calDate;
     }
+    
+    echo sprintf(
+        '<a href="?propref=%s&brandcode=%s&date=%s">Previous</a>',
+        $property->getPropref(),
+        $property->getBrandcode(),
+        date('d-m-Y', $prevDate)
+    );
 
     // Next date
     $nextDate = strtotime("+1 month", $calDate);
-    
     echo sprintf(
-        '<a href="?date=%s">Previous</a>',
-        date('d-m-Y', $prevDate)
-    );
-    echo sprintf(
-        ' | <a href="?date=%s">Next</a>',
+        ' | <a href="?propref=%s&brandcode=%s&date=%s">Next</a>',
+        $property->getPropref(),
+        $property->getBrandcode(),
         date('d-m-Y', $nextDate)
     );
+    
+    $cellContent = sprintf(
+        '<a href="creating-a-new-enquiry.php?propref=%s&brandcode=%s&fromdate={id}">{content}</a>',
+        $property->getPropref(),
+        $property->getBrandcode()
+    );
+    
     echo $property->getCalendarWidget(
         $calDate, 
         array(
             'start_day' => strtolower($property->getChangeOverDay()),
+            'sevenRows' => true,
+            'attributes' => sprintf(
+                'class="calendar" data-month="%s"',
+                date('Y-m', $calDate)
+            ),
+            'cal_cell_content' => $cellContent,
+            'cal_cell_content_today' => $cellContent,
             'sevenRows' => true
         )
     );
