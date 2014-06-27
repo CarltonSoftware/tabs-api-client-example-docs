@@ -21,8 +21,8 @@ try {
     
     // Retrieve property data from api
     $property = tabs\api\property\Property::getProperty(
-        (isset($_GET['propref']) ? $_GET['propref'] : 'mousecott'),
-        'SS'
+        (filter_input(INPUT_GET, 'propref') ? filter_input(INPUT_GET, 'propref') : 'mousecott'),
+        (filter_input(INPUT_GET, 'brandcode') ? filter_input(INPUT_GET, 'brandcode') : 'SS')
     );
     
     // Echoing the property object will call the magic method __toString();
@@ -32,6 +32,12 @@ try {
     echo sprintf(
         '<p>Sleeps: %s</p>',
         $property->getAccommodates()
+    );
+    
+    echo sprintf(
+        '<p><a href="using-the-calendar-widget.php?propref=%s&brandcode=%s">View Avilability</a></p>',
+        $property->getPropref(),
+        $property->getBrandcode()
     );
     
     // You can also call the objects methods to access information
