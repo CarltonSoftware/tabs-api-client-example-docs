@@ -30,8 +30,9 @@ try {
     
     // You can also call the objects methods to access information
     echo sprintf(
-        '<p>Sleeps: %s</p>',
-        $property->getAccommodates()
+        '<p>Sleeps: %s (%s)</p>',
+        $property->getAccommodates(),
+        $property->getAccommodationDescription()
     );
     
     echo sprintf(
