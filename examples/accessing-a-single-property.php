@@ -36,7 +36,7 @@ try {
     );
     
     echo sprintf(
-        '<p><a href="using-the-calendar-widget.php?propref=%s&brandcode=%s">View Avilability</a></p>',
+        '<p><a href="using-the-calendar-widget.php?propref=%s&brandcode=%s">View Availability</a></p>',
         $property->getPropref(),
         $property->getBrandcode()
     );

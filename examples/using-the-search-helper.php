@@ -20,9 +20,12 @@ try {
     
     // Create a new search helper object
     $searchHelper = new \tabs\api\property\SearchHelper(
-        $_GET,              // Search parameters array
-        array(),            // Any search parameters that need to be persisted
-        basename(__FILE__) // Base url of the search page (this is for pagination)
+        // Search parameters array
+        (filter_input_array(INPUT_GET) ? filter_input_array(INPUT_GET) : array()),
+        // Any search parameters that need to be persisted
+        array(),
+        // Base url of the search page (this is for pagination)
+        basename(__FILE__)
     );
     
     // Perform Search
@@ -117,7 +120,13 @@ function displaySearch($searchHelper)
         echo $searchHelper->getPaginationLinks(0, ' | ');
         
         foreach ($properties as $property) {
-            echo sprintf('<p>%s</p>', $property);
+            echo sprintf(
+                '<p><a href="accessing-a-single-property.php?propref=%s&brandcode=%s">%s (%s)</a></p>',
+                $property->getPropRef(),
+                $property->getBrandcode(),
+                $property->getName(),
+                $property->getPropRef()
+            );
         }
     } else {
         echo 'No Properties found';
