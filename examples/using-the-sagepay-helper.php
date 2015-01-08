@@ -9,6 +9,8 @@
  * 
  *      1: The first will initialise the inFrame
  *      2: The second will provide the call back mechanism for sagepay
+ *      3: The third will be the confirmation page which is specified in your
+ *         acknowledgement string.
  *
  * PHP Version 5.3
  * 
