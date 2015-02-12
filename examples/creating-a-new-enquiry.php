@@ -67,6 +67,10 @@ try {
         $enquiry->getTotalPrice()
     );
     
+    ?>
+<p><a href="creating-a-new-booking.php?fromdate=<?php echo date('Y-m-d', $fromdate); ?>&propref=<?php echo $enquiry->getProperty()->getPropref(); ?>&brandcode=<?php echo $enquiry->getProperty()->getBrandcode(); ?>">Book this property</a></p>
+    <?php
+    
     // Below is the immediate public methods available for the enquiry class.
     // This does not include all of the methods for the coupled classes like
     // Extras and Pricing.

@@ -19,11 +19,14 @@ require_once 'creating-a-new-connection.php';
 
 try {
     
-    $bookref = isset($_GET['bookref']) ? $_GET['bookref'] : false;
-    if ($bookref) {
+    if ($bookref = filter_input(INPUT_GET, 'bookref')) {
         $booking = \tabs\api\booking\TabsBooking::getBooking($bookref);
+        if ($booking->isOwnerBooking() === false) {
+            echo sprintf('<p>Customer: %s</p>', $booking->getCustomer());
+        } else {
+            echo '<p>' . $booking->getOwnerBookingType()->getDescription() . '</p>';
+        }
         
-        echo sprintf('<p>Customer: %s</p>', $booking->getCustomer());
         echo sprintf('<p>Property: %s</p>', $booking->getProperty());
         echo sprintf('<p>Bookref: %s</p>', $booking->getBookingRef());
         echo sprintf('<p>From: %s</p>', date('d F Y', $booking->getFromDate()));

@@ -18,17 +18,38 @@
 require_once 'creating-a-new-connection.php';
 
 try {
-    // Create an booking from the api
+    $fromdate = filter_input(INPUT_GET, 'fromdate');
+    $todate = null;
+    $adults = 2;
+    $children = 3;
+    $infants = 0;
+    $pets = 2;
+    if (!$fromdate) {
+        $fromdate = strtotime('01-07-2012');
+        $todate = strtotime('08-07-2012');
+    } else {
+        $fromdate = strtotime($fromdate);
+        $todate = strtotime('+7 days', $fromdate);
+        $adults = 1;
+        $children = 0;
+        $infants = 0;
+        $pets = 0;
+    }
+    
+    
+    // Retrieve an booking from the api
     $booking = \tabs\api\booking\Booking::create(
-        'mousecott', 
-        'SS', 
-        strtotime('01-07-2012'), 
-        strtotime('08-07-2012'), 
-        2, 
-        3,
-        0,
-        2
+        (filter_input(INPUT_GET, 'propref') ? filter_input(INPUT_GET, 'propref') : 'mousecott'), 
+        (filter_input(INPUT_GET, 'brandcode') ? filter_input(INPUT_GET, 'brandcode') : 'SS'), 
+        $fromdate, 
+        $todate, 
+        $adults, 
+        $children,
+        $infants,
+        $pets
     );
+    
+    $booking->addNewExtra('COT', 1, 10);
     
     // Return formatted booking data
     echo sprintf(

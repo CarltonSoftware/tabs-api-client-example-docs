@@ -29,7 +29,7 @@ try {
     );
     
     // Perform Search
-    $searchHelper->search();
+    $searchHelper->search('1');
     
     // Render
     displaySearch($searchHelper);
@@ -54,7 +54,7 @@ try {
     $searchHelper->setFields(array('id', 'name', 'propertyRef'));
     
     // Perform a search
-    $searchHelper->search();
+    $searchHelper->search('1');
     
     // Render
     displaySearch($searchHelper);
@@ -78,7 +78,7 @@ try {
     // Perform a search.  To request all properties, set the second parameter
     // on the search helper to be true.
     $searchHelper->search(
-        '',  // Search id
+        '1',  // Search id
         true
     );
     
