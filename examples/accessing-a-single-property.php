@@ -96,6 +96,19 @@ try {
         );
     }
     
+    // View images of different sizes
+    if ($property->getMainImage()) {
+        echo '<h4>View property images</h4>';
+        echo '<p>Please note, in order to reduce the amount of hits on the api (and thus reduce the cost of usage), we recommend caching images locally.</p>';
+        echo '<p>Default image type (Square, 100px x 100px)<br>';
+        echo $property->getMainImage()->createImageTag();
+        echo '</p>';
+        
+        echo '<p>Smart scalling (400px x 200px)<br>';
+        echo $property->getMainImage()->createImageTag('width', 400, 200);
+        echo '</p>';
+    }
+    
     // Available properties of the property object that are available via
     // property::get{Property}
     
