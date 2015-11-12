@@ -62,6 +62,11 @@ try {
         $property->getAvailabilityDescription()
     );
     
+    // Get list of descriptions
+    foreach ($property->getAllDescriptions('NO') as $desc) {
+        var_dump($desc);
+    }
+    
     // Get a date range price object array
     $drps = $property->getDateRangePrices(date('Y'));
     if (count($drps) > 0) {
@@ -107,6 +112,12 @@ try {
         echo '<p>Smart scalling (400px x 200px)<br>';
         echo $property->getMainImage()->createImageTag('width', 400, 200);
         echo '</p>';
+    }
+    
+    var_dump(tabs\api\client\ApiClient::getApi()->getRoutes());
+    
+    if ($property->isOnSpecialOffer()) {
+        echo $property->getSpecialOffersDescriptions('<p>', '</p>');
     }
     
     // Available properties of the property object that are available via

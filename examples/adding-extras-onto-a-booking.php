@@ -20,24 +20,33 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        'c70175835bda68846e'
+        (filter_input(INPUT_GET, 'bookingId') ? filter_input(INPUT_GET, 'bookingId') : 'c70175835bda68846e')
     );
     
     // Example booking already has a pet, need to remove it for this example
     $booking->removeExtra('PET');
+    $booking->removeExtra('ZZZ');
+    $booking->removeExtra('ZERO');
     
     // Return available extras for booking
     $extras = $booking->getAvailableExtras();
-    foreach ($extras as $extra) {
-        echo sprintf(
-            '<p>%s</p>',
-            $extra->getDescription()
-        );
-    }
+//    foreach ($extras as $extra) {
+//        echo sprintf(
+//            '<p>%s</p>',
+//            $extra->getDescription()
+//        );
+//    }
     
     // Add a new extra to the booking factory.
     // The list of extra codes can be retrieved with the UtilityFactory.
     
+    foreach ($booking->getPricing()->getExtras() as $extra) {
+        echo sprintf(
+            '<p>%s %s</p>',
+            $extra->getDescription(),
+            $extra->getTotalPrice()
+        );
+    }
     echo sprintf(
         '<p>%s - %s</p>',
         $booking->getTotalPrice(),
@@ -45,14 +54,23 @@ try {
     );
     
     $booking->addNewExtra('PET', 1);
+    $booking->addNewExtra('ZZZ', 1);
+    $booking->addNewExtra('ZERO', 2, 5);
     
+    foreach ($booking->getPricing()->getExtras() as $extra) {
+        echo sprintf(
+            '<p>Added %s costing &pound;%s</p>',
+            $extra->getDescription(),
+            $extra->getTotalPrice()
+        );
+    }
     echo sprintf(
         '<p>%s - %s</p>',
         $booking->getTotalPrice(),
         $booking->getDepositAmount()
     );
     
-    $booking->removeExtra('PET');
+    //$booking->removeExtra('PET');
     
     echo sprintf(
         '<p>%s - %s</p>',

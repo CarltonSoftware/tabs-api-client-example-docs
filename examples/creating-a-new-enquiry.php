@@ -63,7 +63,7 @@ try {
         $enquiry->getToDateString(),
         $enquiry->getBasicPrice(),
         $enquiry->getExtrasTotal(),
-        $enquiry->getPricing()->getExtraDetail('BKFE')->getTotalPrice(),
+        ($enquiry->getPricing()->getExtraDetail('BKFE')) ? $enquiry->getPricing()->getExtraDetail('BKFE')->getTotalPrice() : 0,
         $enquiry->getTotalPrice()
     );
     

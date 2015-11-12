@@ -35,6 +35,18 @@ try {
             '<p>Price: &pound;%s</p>', 
             number_format($booking->getTotalPrice(), 2)
         );
+        echo sprintf(
+            '<p>Pets: %s</p>', 
+            $booking->getPets()
+        );
+        echo sprintf(
+            '<p>Repeat property booker: %s</p>', 
+            $booking->getRepeatPropertyBooker()
+        );
+        echo sprintf(
+            '<p>Repeat owner booker: %s</p>', 
+            $booking->getRepeatOwnerBooker()
+        );
     }
     
 } catch(Exception $e) {

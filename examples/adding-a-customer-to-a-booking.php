@@ -20,7 +20,7 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        'c70175835bda68846e'
+        (filter_input(INPUT_GET, 'bookingId') ? filter_input(INPUT_GET, 'bookingId') : 'c70175835bda68846e')
     );
     
     // Create a new customer object and populate fields
@@ -55,6 +55,8 @@ try {
     
     // Confirm that customer has been added onto booking
     echo $booking->getCustomer();
+    
+    echo '<p><a href="adding-party-details-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add party details</a></p>';
     
     
     

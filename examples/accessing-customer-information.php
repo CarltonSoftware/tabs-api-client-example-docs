@@ -18,7 +18,8 @@ require_once 'creating-a-new-connection.php';
 
 try {
     
-    $customer = \tabs\api\core\Customer::create('COTJ033');
+    $customer = \tabs\api\core\Customer::create('BROO263');
+    echo sprintf('<p>%s</p>', (string) $customer);    
     
     foreach ($customer->getBookings() as $booking) {
         /* @var \tabs\api\booking\TabsBooking $booking */

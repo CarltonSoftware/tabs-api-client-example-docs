@@ -20,7 +20,7 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        'c70175835bda68846e'
+        (filter_input(INPUT_GET, 'bookingId') ? filter_input(INPUT_GET, 'bookingId') : 'c70175835bda68846e')
     );
     
     // Clear party members first
@@ -51,6 +51,10 @@ try {
             $partyMember
         );
     }
+    
+    echo '<p><a href="adding-a-payment-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add payment</a></p>';
+    echo '<p><a href="confirming-a-booking.php?bookingId=' . $booking->getBookingId() . '">Confirm booking</a></p>';
+    
     
 } catch(Exception $e) {
     // Calls magic method __toString
