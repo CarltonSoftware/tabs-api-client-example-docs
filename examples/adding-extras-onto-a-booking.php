@@ -78,7 +78,7 @@ try {
         $booking->getDepositAmount()
     );
     
-    var_dump(\tabs\api\client\ApiClient::getApi()->getRoutes());
+    include 'includes/bookingOutput.php';
     
 } catch(Exception $e) {
     // Calls magic method __toString
