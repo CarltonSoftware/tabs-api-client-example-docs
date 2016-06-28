@@ -64,12 +64,7 @@ try {
     
     // Get list of descriptions
     foreach ($property->getAllDescriptions('NO') as $desc) {
-        ?>
-<dl>
-    <dt><?php echo $desc['descriptiontype']; ?></dt>
-    <dd><?php echo $desc['description']; ?></dd>
-</dl>
-        <?php
+        var_dump($desc);
     }
     
     // Get a date range price object array

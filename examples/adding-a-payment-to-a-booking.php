@@ -61,7 +61,7 @@ try {
     // Payments can be accessed via the following method
     var_dump($booking->getPayments());
     
-    include 'includes/bookingOutput.php';
+    echo '<p><a href="confirming-a-booking.php?bookingId=' . $booking->getBookingId() . '">Confirm booking</a></p>';
     
 } catch(Exception $e) {
     // Calls magic method __toString

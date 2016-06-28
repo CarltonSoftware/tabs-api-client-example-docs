@@ -33,7 +33,7 @@ try {
     // Add a promotion
     $booking->addPromotion('PROMO001');
     
-    include 'includes/bookingOutput.php';
+    var_dump(\tabs\api\client\ApiClient::getApi()->getRoutes());
     
 } catch(Exception $e) {
     // Calls magic method __toString

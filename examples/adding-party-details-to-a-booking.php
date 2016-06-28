@@ -52,7 +52,8 @@ try {
         );
     }
     
-    include 'includes/bookingOutput.php';
+    echo '<p><a href="adding-a-payment-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add payment</a></p>';
+    echo '<p><a href="confirming-a-booking.php?bookingId=' . $booking->getBookingId() . '">Confirm booking</a></p>';
     
     
 } catch(Exception $e) {
