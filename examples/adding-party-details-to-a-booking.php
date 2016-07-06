@@ -20,7 +20,7 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        (filter_input(INPUT_GET, 'bookingId') ? filter_input(INPUT_GET, 'bookingId') : 'c70175835bda68846e')
+        (filter_input(INPUT_GET, 'bookref') ? filter_input(INPUT_GET, 'bookref') : 'c70175835bda68846e')
     );
     
     // Clear party members first
@@ -44,16 +44,7 @@ try {
         $booking->getBookingId()
     );
     
-    // Request party data
-    foreach ($booking->getPartyDetails() as $partyMember) {
-        echo sprintf(
-            '<p>%s</p>', 
-            $partyMember
-        );
-    }
-    
-    echo '<p><a href="adding-a-payment-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add payment</a></p>';
-    echo '<p><a href="confirming-a-booking.php?bookingId=' . $booking->getBookingId() . '">Confirm booking</a></p>';
+    include 'includes/bookingOutput.php';
     
     
 } catch(Exception $e) {

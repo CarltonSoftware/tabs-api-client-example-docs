@@ -72,7 +72,7 @@ try {
         $booking->getPayableAmount()
     );
     
-    echo '<p><a href="adding-a-customer-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add a customer</a></p>';
+    include 'includes/bookingOutput.php';
     
     // Below is the immediate public methods available for the booking class.
     // This does not include all of the methods for the coupled classes like

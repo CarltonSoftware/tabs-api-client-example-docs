@@ -20,13 +20,14 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        (filter_input(INPUT_GET, 'bookingId') ? filter_input(INPUT_GET, 'bookingId') : 'c70175835bda68846e')
+        (filter_input(INPUT_GET, 'bookref') ? filter_input(INPUT_GET, 'bookref') : 'c70175835bda68846e')
     );
     
     // Example booking already has a pet, need to remove it for this example
     $booking->removeExtra('PET');
     $booking->removeExtra('ZZZ');
     $booking->removeExtra('ZERO');
+    $booking->removeExtra('AFFIL');
     
     // Return available extras for booking
     $extras = $booking->getAvailableExtras();
@@ -53,9 +54,10 @@ try {
         $booking->getDepositAmount()
     );
     
-    $booking->addNewExtra('PET', 1);
-    $booking->addNewExtra('ZZZ', 1);
-    $booking->addNewExtra('ZERO', 2, 5);
+    //$booking->addNewExtra('PET', 1);
+    //$booking->addNewExtra('ZZZ', 1);
+    //$booking->addNewExtra('ZERO', 2, 5);
+    $booking->addNewExtra('AFFIL', 1, 50);
     
     foreach ($booking->getPricing()->getExtras() as $extra) {
         echo sprintf(
@@ -78,7 +80,7 @@ try {
         $booking->getDepositAmount()
     );
     
-    var_dump(\tabs\api\client\ApiClient::getApi()->getRoutes());
+    include 'includes/bookingOutput.php';
     
 } catch(Exception $e) {
     // Calls magic method __toString

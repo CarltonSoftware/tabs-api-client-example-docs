@@ -53,10 +53,7 @@ try {
     // Add the customer to the booking object
     $booking->setCustomer($customer);
     
-    // Confirm that customer has been added onto booking
-    echo $booking->getCustomer();
-    
-    echo '<p><a href="adding-party-details-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add party details</a></p>';
+    include 'includes/bookingOutput.php';
     
     
     

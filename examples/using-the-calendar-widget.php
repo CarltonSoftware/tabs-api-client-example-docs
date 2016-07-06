@@ -17,6 +17,16 @@
 // Include the connection
 require_once 'creating-a-new-connection.php';
 
+?>
+    <style>
+        .past,
+        .unavailable {
+            background: lightgrey;
+            text-decoration: none;
+        }
+    </style>
+<?php
+
 try {
     
     // Retrieve property data from api
