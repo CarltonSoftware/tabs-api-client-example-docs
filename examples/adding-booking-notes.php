@@ -20,7 +20,7 @@ require_once 'creating-a-new-connection.php';
 try {
     // Create an booking from the api with a given id
     $booking = \tabs\api\booking\Booking::createBookingFromId(
-        'c70175835bda68846e'
+        (filter_input(INPUT_GET, 'bookref') ? filter_input(INPUT_GET, 'bookref') : 'c70175835bda68846e')
     );
     
     // Add booking note
@@ -30,8 +30,7 @@ try {
         // make the note private
     );
     
-    // Booking notes array
-    var_dump($booking->getNotes());
+    include 'includes/bookingOutput.php';
     
 } catch(Exception $e) {
     // Calls magic method __toString

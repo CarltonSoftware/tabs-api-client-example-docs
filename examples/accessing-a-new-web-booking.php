@@ -19,22 +19,11 @@ require_once 'creating-a-new-connection.php';
 
 try {
     
-    $bookref = isset($_GET['bookref']) ? $_GET['bookref'] : false;
-    if ($bookref) {
-        $booking = \tabs\api\booking\Booking::createBookingFromId($bookref);
-        
-        echo sprintf('<p>Id: %s</p>', $booking->getBookingId());
-        echo sprintf('<p>From: %s</p>', $booking->getFromDateString());
-        echo sprintf('<p>Till: %s</p>', $booking->getToDateString());        
-        echo sprintf(
-            '<p>Extras: &pound;%s</p>', 
-            number_format($booking->getExtrasTotal(), 2)
-        );
-        echo sprintf(
-            '<p>Price: &pound;%s</p>', 
-            number_format($booking->getTotalPrice(), 2)
-        );
-    }
+    $booking = \tabs\api\booking\Booking::createBookingFromId(
+        (filter_input(INPUT_GET, 'bookref') ? filter_input(INPUT_GET, 'bookref') : 'c70175835bda68846e')
+    );
+    
+    include 'includes/bookingOutput.php';
     
 } catch(Exception $e) {
     echo $e->getMessage();

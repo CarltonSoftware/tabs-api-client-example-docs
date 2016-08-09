@@ -25,6 +25,16 @@ if ($booking) {
         $booking->getPayableAmount()
     );
     
+    if (count($booking->getNotes()) > 0) {
+        echo '<h3>Notes</h3><ul>';
+        foreach ($booking->getNotes() as $note) {
+            echo '<li>' . $note['message'] . '</li>';
+        }
+        echo '</ul>';
+    }
+    
+    echo '<p><a href="accessing-a-new-web-booking.php?bookref=' . $booking->getBookingId() . '">View booking</a></p>';
+    
     if ($booking->getCustomer()) {
         echo '<h3>Customer</h3>';
         echo '<p>' . (string) $booking->getCustomer() . '</p>';
