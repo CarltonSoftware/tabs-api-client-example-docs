@@ -57,6 +57,7 @@ try {
             <li>Till: %s</li>
             <li>Basic Price: &pound;%s</li>
             <li>Extras: &pound;%s (Including Booking fee of &pound;%s)</li>
+            <li>Deposit Price: &pound;%s</li>
             <li>Total Price: &pound;%s</li>
         </ul>',
         $enquiry->getFromDateString(),
@@ -64,6 +65,7 @@ try {
         $enquiry->getBasicPrice(),
         $enquiry->getExtrasTotal(),
         ($enquiry->getPricing()->getExtraDetail('BKFE')) ? $enquiry->getPricing()->getExtraDetail('BKFE')->getTotalPrice() : 0,
+        $enquiry->getDepositAmount(),
         $enquiry->getTotalPrice()
     );
     

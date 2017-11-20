@@ -54,6 +54,7 @@ if ($booking) {
 
     echo '<p><a href="adding-extras-onto-a-booking.php?bookref=' . $booking->getBookingId() . '">Add extras</a></p>';
     echo '<p><a href="adding-booking-notes.php?bookref=' . $booking->getBookingId() . '">Add notes</a></p>';
+    echo '<p><a href="adding-a-sagepay-payment-to-a-booking.php?bookingId=' . $booking->getBookingId() . '">Add Sage Pay Payment</a></p>';
     
     if ($booking->getCustomer() 
         && count($booking->getPartyDetails()) > 0 

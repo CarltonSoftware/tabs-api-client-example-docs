@@ -114,6 +114,8 @@ try {
         echo '</p>';
     }
     
+    var_dump($property->getComments());
+    
     var_dump(tabs\api\client\ApiClient::getApi()->getRoutes());
     
     if ($property->isOnSpecialOffer()) {

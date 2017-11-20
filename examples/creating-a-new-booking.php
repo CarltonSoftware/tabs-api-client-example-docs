@@ -78,6 +78,7 @@ try {
     // This does not include all of the methods for the coupled classes like
     // Extras and Pricing.
     var_dump(get_class_methods($booking)); 
+    var_dump(tabs\api\client\ApiClient::getApi()->getRoutes()); 
     
 } catch(Exception $e) {
     // Calls magic method __toString
